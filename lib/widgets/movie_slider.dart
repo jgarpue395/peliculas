@@ -7,8 +7,7 @@ class MovieSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 270,
-      color: Colors.red,
+      height: 265,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,22 +38,28 @@ class _MoviePoster extends StatelessWidget {
     return Container (
       width: 130,
       height: 190,
-      color: Colors.green,
       margin: const EdgeInsets.all(10),
       child: Column(
-        children: const [
-          FadeInImage(
-            placeholder: AssetImage("assets/no-image.jpg"), 
-            image: NetworkImage("https://via.placeholder.com/300x400"),
-            width: 130,
-            height: 190,
-            fit: BoxFit.cover,
+        children: [
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, "details", arguments: "movie-"),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: const FadeInImage(
+                placeholder: AssetImage("assets/no-image.jpg"), 
+                image: NetworkImage("https://via.placeholder.com/300x400"),
+                width: 130,
+                height: 190,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
 
-          Text(
+          const Text(
             "Start Wars: El retorno del Jedi silvestre de Monte Cristo",
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
           )
         ]
       ),
