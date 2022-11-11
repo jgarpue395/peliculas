@@ -1,8 +1,13 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
+import '../models/models.dart';
+
 class CardSwiper extends StatelessWidget {
-  const CardSwiper({super.key});
+
+  final List<Movie> movies;
+  
+  const CardSwiper({super.key, required this.movies});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +29,7 @@ class CardSwiper extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               child: const FadeInImage(
                 placeholder: AssetImage("assets/loading.gif"), 
-                image: NetworkImage("https://via.placeholder.com/300x400"),
+                image: NetworkImage("https://via.placeholder.com/300x400.jpg"),
                 fit: BoxFit.cover
               ),
             ),
