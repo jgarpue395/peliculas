@@ -14,22 +14,32 @@ class CardSwiper extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
 
+    if(movies.isEmpty)
+    {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+
     return Container(
       width: double.infinity,
       height: size.height * 0.5,
       child: Swiper(
-        itemCount: 10,
+        itemCount: movies.length,
         layout:  SwiperLayout.STACK,
         itemWidth: size.width * 0.6,
         itemHeight: size.height * 0.4,
         itemBuilder: (_, index) {
+
+          final Movie movie = movies[index];
+
           return GestureDetector(
-            onTap: () => Navigator.pushNamed(context, "details", arguments: "movie-instance"),
+            onTap: () => Navigator.pushNamed(context, "details", arguments: movie),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: const FadeInImage(
-                placeholder: AssetImage("assets/loading.gif"), 
-                image: NetworkImage("https://via.placeholder.com/300x400.jpg"),
+              child: FadeInImage(
+                placeholder: const AssetImage("assets/loading.gif"), 
+                image: NetworkImage(movie.fullPosterImg),
                 fit: BoxFit.cover
               ),
             ),

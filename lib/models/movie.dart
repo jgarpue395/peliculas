@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'models.dart';
 
 class Movie {
     Movie({
@@ -33,6 +32,22 @@ class Movie {
     bool video;
     double voteAverage;
     int voteCount;
+
+    get fullPosterImg {
+      if (posterPath != null) {
+        return "https://image.tmdb.org/t/p/w500$posterPath";
+      }
+      
+      return "https://i.stack.ingur.com/GNhx0.png";
+    }
+
+    get fullBackdropImg {
+      if (posterPath != null) {
+        return "https://image.tmdb.org/t/p/w500$backdropPath";
+      }
+      
+      return "https://i.stack.ingur.com/GNhx0.png";
+    }
 
     factory Movie.fromJson(String str) => Movie.fromMap(json.decode(str));
 

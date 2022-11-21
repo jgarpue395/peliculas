@@ -34,7 +34,11 @@ class HomeScreen extends StatelessWidget {
 
             const SizedBox(height: 25,),
 
-            const MovieSlider(),
+            MovieSlider( 
+              movies: moviesProvider.popularMovies,
+              title: "Populares",
+              onNextPage: () => moviesProvider.getPopularMovies()  
+            ),
           ],
         ),
       ),
